@@ -1,6 +1,6 @@
 # OpenSpecimen Tomcat Container
  
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 ARG VERSION="v7.0.x"
 
