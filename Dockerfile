@@ -2,7 +2,7 @@
  
 FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
-ARG VERSION="v7.0.x"
+ARG VERSION="v8.2.RC2"
 
 # update system
 RUN apt-get update -y -q \
@@ -42,9 +42,10 @@ RUN cd /usr/share/tomcat9/lib \
 #properties & config-files
 RUN rm /var/lib/tomcat9/conf/context.xml \
     && rm /var/lib/tomcat9/conf/tomcat-users.xml
-ADD configs/context.xml /var/lib/tomcat9/conf/
+ADD configs/context.xml.template /var/lib/tomcat9/conf/
 ADD configs/openspecimen.properties /var/lib/tomcat9/conf/
 ADD configs/tomcat-users.xml /var/lib/tomcat9/conf/
+ADD configs/OpenSpecimenAPIconnector-0.9.2-py3-none-any.whl /usr/local/src/
 
 
 #rights and ownerships for installation
@@ -57,7 +58,7 @@ RUN printf "[Service]\n%s\n" "ReadWritePaths=/var/lib/openspecimen/" > "/etc/sys
 #    && rm -rf /var/lib/tomcat9/webapps/ROOT \
 #    && mv /var/lib/tomcat9/webapps/openspecimen.war /var/lib/tomcat9/webapps/ROOT.war
 #     
-
+RUN apt-get -y install python3-pip && python3 -m pip install xlrd && python3 -m pip install argparse 
 RUN echo 'export PS1="[\u@openspecimen:\w]# "' >> /root/.bashrc
 
 
