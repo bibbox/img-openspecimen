@@ -53,5 +53,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ env.BRANCH }}
           labels: ${{ steps.meta.outputs.labels }}
