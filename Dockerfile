@@ -2,6 +2,7 @@
  
 FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
+ARG VERSION v10.1.1.RC1
 
 # update system
 RUN apt-get update -y -q \
@@ -14,16 +15,17 @@ RUN apt-get update -y -q \
 
 ## INSTALL DEPENDENCIES
 # apt install
-RUN apt-get install -y -q openjdk-8-jre-headless \
-    && apt-get install -y -q openjdk-8-jdk-headless \
+RUN apt install -y -q openjdk-17-jdk-headless \
+    && apt install -y -q openjdk-17-jre-headless \
     && apt-get install -y -q tomcat9 \
     && apt-get install -y -q nano \
     && apt-get install -y -q wget \
+    && apt-get install -y mysql-client \
     && apt-get update -y -q
 
 ##SET UP OPENSPECIMEN BUILD
 #ENVIRONMENT
-ENV JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/" 
+ENV JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64/" 
 ENV CATALINA_BASE="/var/lib/tomcat9" 
 ENV TOMCAT_HOME="/var/lib/tomcat9" 
 ENV export JAVA_HOME 

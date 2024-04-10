@@ -1,2 +1,4 @@
 [mysqld]
+default-storage-engine=INNODB
 lower_case_table_names=1
+log_bin_trust_function_creators = 1

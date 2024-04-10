@@ -9,7 +9,12 @@ Check out the app repository [app-openspecimen](https://github.com/bibbox/app-op
 ## Local Testing
 
 ```
+mkdir data
+mkdir data/openspecimen
+mkdir data/openspecimen/data
+mkdir data/openspecimen/plugins
+chmod a+w -R data/openspecimen 
 docker network create bibbox-default-network
 docker compose up --build
 ```
-Test the openspecimen instance at http://localhost:9000/
+Test the openspecimen instance at http://localhost:9000/openspecimen/#/

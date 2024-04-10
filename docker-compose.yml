@@ -37,6 +37,7 @@ services:
       - "local-openspecimen-db:openspecimen-db"
     environment:
       - DATABASE_HOST=openspecimen-db
+      - DATABASE_PORT=3306
       - MYSQL_ROOT_PASSWORD=openspecimen
       - MYSQL_DATABASE=openspecimen
       - MYSQL_USER=openspecimen
@@ -47,4 +48,5 @@ services:
       - ./data/openspecimen:/var/lib/openspecimen
     ports:
       - "9000:8080"
+    #entrypoint: ["tail","-f","/dev/null"]
     
