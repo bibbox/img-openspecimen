@@ -2,7 +2,6 @@
  
 FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
-ARG VERSION="v9.0.RC1"
 
 # update system
 RUN apt-get update -y -q \
