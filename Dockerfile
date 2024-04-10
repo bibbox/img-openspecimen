@@ -62,9 +62,6 @@ RUN chown -R tomcat:tomcat "/var/lib/tomcat9/" \
 #CSet up OS
 RUN sed -i -r 's/^(JAVA_OPTS=.*)"/\1 -Xmx2048m"/' "/etc/default/tomcat9"
 RUN printf "[Service]\n%s\n" "ReadWritePaths=/var/lib/openspecimen/" > "/etc/systemd/system/tomcat9.service.d/openspecimen.conf"
-#    && rm -rf /var/lib/tomcat9/webapps/ROOT \
-#    && mv /var/lib/tomcat9/webapps/openspecimen.war /var/lib/tomcat9/webapps/ROOT.war
-#   
 
 RUN apt-get update && apt-get -y install python3-pip && python3 -m pip install xlrd && python3 -m pip install argparse 
 RUN echo 'export PS1="[\u@openspecimen:\w]# "' >> /root/.bashrc

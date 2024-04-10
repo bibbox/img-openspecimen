@@ -28,8 +28,6 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: local-openspecimen-web
-    #user: tomcat
-    #privileged: true
     restart: unless-stopped
     networks:
       - bibbox-default-network
@@ -48,5 +46,4 @@ services:
       - ./data/openspecimen:/var/lib/openspecimen
     ports:
       - "9000:8080"
-    #entrypoint: ["tail","-f","/dev/null"]
     

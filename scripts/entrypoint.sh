@@ -18,7 +18,6 @@ echo "Wait for DB server to be ready"
 /opt/scripts/waitforit.sh "${DATABASE_HOST}:${DATABASE_PORT}"
 
 
-#/usr/share/tomcat9/bin/catalina.sh start
 /usr/share/tomcat9/bin/startup.sh
 
 func_fix_sql_migration&
