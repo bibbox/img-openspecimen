@@ -60,6 +60,7 @@ RUN chown -R tomcat:tomcat "/var/lib/tomcat9/" \
     && chown -R tomcat:tomcat "/usr/local/src/"
 
 #CSet up OS
+RUN echo 'JAVA_OPTS="-Xmx2048m"' > /usr/share/tomcat9/bin/setenv.sh
 RUN sed -i -r 's/^(JAVA_OPTS=.*)"/\1 -Xmx2048m"/' "/etc/default/tomcat9"
 RUN printf "[Service]\n%s\n" "ReadWritePaths=/var/lib/openspecimen/" > "/etc/systemd/system/tomcat9.service.d/openspecimen.conf"
 
